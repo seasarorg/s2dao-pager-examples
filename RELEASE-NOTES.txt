@@ -1,0 +1,33 @@
+S2Pager Version 1.1.0 Release Notes
+
+2005/03/21
+  v1.1.1リリース。
+  - [修正]DefaultPagerConditionでSerializableをimplementsするように修正
+
+  ◆v1.1.0からバージョンアップする場合、以下の作業が必要です。
+    1. s2pager-1.1.0.jarをs2pager-1.1.1.jarと入れ替える。
+
+2005/03/18
+  v1.1.0リリース。S2-2.2.3, S2Dao-1.0.23対応したバージョン。
+  - [修正]PagerSupportのJavaDocを修正
+  - [追加]S2TestCaseを使ったテストケースの充実
+  - [修正]Oracle対応。確認環境:Oracle8.1.7
+  - [修正]スクロール可能カーソル対応
+
+  ◆以前のバージョンからのバージョンアップする場合、以下の作業が必要です。
+    1. S2,S2DaoのバージョンをS2-2.2.3, S2Dao-1.0.23に上げる。
+    2. j2ee.diconを最新に置き換える。(xaDataSourceの設定も忘れずに)
+    3. dao.diconをS2Pager付属のものに置き換える。（あるいは書き換える）
+
+2004/11/17
+  v1.0.1リリース。
+  - [バグ修正]カーソルをサポートしないDB(HSQLDBなど)でPagerCondition#getCountの値が
+  　1多いバグを修正。
+  - [機能追加]List,CollectionをフィルタリングするPagerUtil#filterメソッドを追加
+  - [仕様変更]DAOのメソッドの引数にひとつでもPagerConditionが含まれていれば
+  　ページャの対象とするように仕様変更。
+  　（以前は引数が１つかつPagerConditionがページャの対象だった）
+  - ResultSetUtilのメソッド名の綴りを修正した。
+  
+2004/11/06
+  v1.0.0リリース。
