@@ -55,8 +55,8 @@
 			"jdbc:hsqldb:hsql://localhost:9001"
 			-->
 			"jdbc:hsqldb:file:" 
-				+ @org.seasar.framework.util.EclipseUtil@getProjectRoot("s2dao-pager-examples").getAbsolutePath() 
-				+ "/web/WEB-INF/classes/data/demo"
+				+ @org.seasar.framework.util.ResourceUtil@getBuildDir(@examples.pager.Book@class).getAbsolutePath() 
+				+ "/data/demo"
 		</property>
 		<property name="user">"sa"</property>
 		<property name="password">""</property>
