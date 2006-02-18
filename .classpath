@@ -10,9 +10,9 @@
 	<classpathentry kind="lib" path="web/WEB-INF/lib/log4j-1.2.8.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/ognl-2.6.5.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/poi-2.5.1-final-20040804.jar"/>
-	<classpathentry kind="lib" path="web/WEB-INF/lib/s2-dao-1.0.31-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="web/WEB-INF/lib/s2-extension-2.3.7-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="web/WEB-INF/lib/s2-framework-2.3.7-SNAPSHOT.jar"/>
+	<classpathentry sourcepath="lib/s2-dao-1.0.31-SNAPSHOT-sources.jar" kind="lib" path="web/WEB-INF/lib/s2-dao-1.0.31-SNAPSHOT.jar"/>
+	<classpathentry sourcepath="lib/s2-extension-2.3.7-SNAPSHOT-sources.jar" kind="lib" path="web/WEB-INF/lib/s2-extension-2.3.7-SNAPSHOT.jar"/>
+	<classpathentry sourcepath="lib/s2-framework-2.3.7-SNAPSHOT-sources.jar" kind="lib" path="web/WEB-INF/lib/s2-framework-2.3.7-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/aopalliance-1.0.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/commons-logging-1.0.4.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/javassist-3.0.jar"/>
