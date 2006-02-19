@@ -17,7 +17,7 @@ package examples.pager;
 
 import java.util.List;
 
-import org.seasar.dao.pager.TestUtil;
+import org.seasar.dao.pager.PagerResultSetFactoryWrapper;
 import org.seasar.extension.unit.S2TestCase;
 
 /**
@@ -30,6 +30,8 @@ public class BookDaoBenchTest extends S2TestCase {
     private static String PATH = "BookDaoTest.dicon";
 
     private BookDao bookDao;
+
+    private PagerResultSetFactoryWrapper resultSetFactoryWrapper;
 
     protected void setUp() throws Exception {
         include(PATH);
@@ -56,7 +58,7 @@ public class BookDaoBenchTest extends S2TestCase {
     }
 
     private long processBench(boolean useAbsolute) {
-        TestUtil.setUseAbsolute(useAbsolute);
+        resultSetFactoryWrapper.setUseScrollCursor(useAbsolute);
         readXlsAllReplaceDb("BookDaoBench_BenchPrepare.xls");
         CategoryPagerCondition condition = new CategoryPagerCondition();
         condition.setLimit(10);
