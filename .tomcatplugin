@@ -7,5 +7,5 @@
     <updateXml>true</updateXml>
     <warLocation></warLocation>
     <extraInfo></extraInfo>
-    <webPath>/s2dao-pager-examples</webPath>
+    <webPath>/s2-dao-pager-examples</webPath>
 </tomcatProjectProperties>
