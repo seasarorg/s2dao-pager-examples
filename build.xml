@@ -1,100 +1,20 @@
-<project name="seasar" default="dist" basedir=".">
+<project name="s2dao-pager-examples" default="dist" basedir=".">
 
-	<property name="src" value="src" />
-	<property name="build" value="build" />
-	<property name="ver" value="1.1.0" />
+	<property name="ver" value="1.0.31-SNAPSHOT"/>
 
-	<property name="jarfile" value="s2-pager-${ver}.jar" />
-	<property name="warfile" value="s2pager.war" />
-	<property name="releasejarfile" value="../setup2/S2PagerV${ver}.zip" />
-	<property name="package" value="org/seasar/dao/pager/" />
-	<property name="lib" value="web/WEB-INF/lib" />
-	<property name="outlib" value="lib" />
-	<property name="setupdir" value="../setup2/s2pager/" />
-
-	<fileset id="classpath" dir="${lib}">
-		<include name="*" />
-	</fileset>
-
-	<target name="compile">
-		<javac srcdir="${src}" destdir="${build}" debug="on">
-			<classpath>
-				<fileset refid="classpath" />
-			</classpath>
-		</javac>
-	</target>
-
-	<target name="copy" depends="compile">
-		<copy todir="${build}">
-			<fileset dir="${src}">
-				<include name="**/*.properties" />
-				<include name="**/*.xml" />
-				<include name="**/*.dtd" />
-				<exclude name="build.xml" />
-			</fileset>
-		</copy>
-	</target>
-
-	<target name="dist" depends="compile,copy,cleantargetjarfile">
-		<jar jarfile="${outlib}/${jarfile}" basedir="${build}" includes="${package}" />
-	</target>
-
-	<target name="cleanbuild">
-		<delete dir="${build}/${package}" />
-	</target>
-
-	<target name="clean" depends="cleanbuild">
-		<delete file="${dist}/${jarfile}" />
-	</target>
-
-	<target name="cleantargetjarfile">
-		<delete>
-			<fileset dir="${outlib}" defaultexcludes="no">
-				<include name="s2-pager-*.jar" />
-			</fileset>
+	<target name="dist">
+		<delete includeemptydirs="true" failonerror="false">
+			<fileset dir="target"/>
 		</delete>
-		<delete>
-			<fileset dir="${lib}" defaultexcludes="no">
-				<include name="s2-pager-*.jar" />
-			</fileset>
-		</delete>
-	</target>
-
-	<target name="war">
-		<copy todir="${lib}">
-			<fileset dir="${outlib}">
-				<exclude name="s2-pager-*.jar" />
-			</fileset>
-		</copy>
-		<war destfile="${warfile}" basedir="web" webxml="web/WEB-INF/web.xml" 
-			excludes="**/postgresql*.jar, **/classes12*.zip"/>
-	</target>
-
-	
-	<target name="setup" depends="dist">
-		<delete>
-			<fileset dir="${setupdir}" />
-		</delete>
-		<copy todir="${setupdir}">
-			<fileset dir=".">
-				<exclude name="**/CVS/**" />
-				<exclude name="${build}/**" />
-				<exclude name="**/postgresql*.jar"/>
-				<exclude name="**/classes12*.zip"/>
-				<!--
-				<exclude name="doc/**" />
-				-->
-			</fileset>
-			<!--
-			<fileset dir="../seasar2/">
-				<include name="doc/" />
-			</fileset>
-			-->
-		</copy>
-		<delete dir="${setupdir}build" />
-		<mkdir dir="${setupdir}build" />
-		<zip zipfile="${releasejarfile}" basedir="../setup2" includes="s2pager/" />
+		<mkdir dir="target"/>
+		<zip zipfile="target/s2dao-pager-examples-${ver}.zip">
+			<zipfileset prefix="s2dao-pager-examples" dir=".">
+				<exclude name="target/**"/>
+				<exclude name="**/.settings/**"/>
+				<exclude name="build.xml"/>
+				<exclude name="web/WEB-INF/classes/**"/>
+			</zipfileset>
+		</zip>
 	</target>
 
 </project>
-
