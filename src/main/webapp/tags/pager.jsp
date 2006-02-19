@@ -26,6 +26,7 @@
 <c:if test="${counter != 'false'}">
 	<td width="200" align="left" valign="center">
 		該当件数：<c:out value="${helperCondition.count}"/>件
+		(<c:out value="${helperCondition.offset + 1}"/>～<c:out value="${helperCondition.currentLastOffset + 1}"/>)
 	</td>
 </c:if>
 
