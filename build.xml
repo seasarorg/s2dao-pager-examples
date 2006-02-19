@@ -3,16 +3,13 @@
 	<property name="ver" value="1.0.31-SNAPSHOT"/>
 
 	<target name="dist">
-		<delete includeemptydirs="true" failonerror="false">
-			<fileset dir="target"/>
-		</delete>
 		<mkdir dir="target"/>
 		<zip zipfile="target/s2dao-pager-examples-${ver}.zip">
 			<zipfileset prefix="s2dao-pager-examples" dir=".">
 				<exclude name="target/**"/>
 				<exclude name="**/.settings/**"/>
 				<exclude name="build.xml"/>
-				<exclude name="web/WEB-INF/classes/**"/>
+				<exclude name="src/main/webapp/WEB-INF/classes/**"/>
 			</zipfileset>
 		</zip>
 	</target>
