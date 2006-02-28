@@ -1,10 +1,9 @@
 <project name="s2dao-pager-examples" default="dist" basedir=".">
-
-	<property name="ver" value="1.0.31-SNAPSHOT"/>
+	<property name="ver" value="1.0.31"/>
 
 	<target name="dist">
 		<mkdir dir="target"/>
-		<zip zipfile="target/s2dao-pager-examples-${ver}.zip">
+		<zip zipfile="target/s2-dao-pager-examples-${ver}.zip">
 			<zipfileset prefix="s2dao-pager-examples" dir=".">
 				<exclude name="target/**"/>
 				<exclude name="**/.settings/**"/>
