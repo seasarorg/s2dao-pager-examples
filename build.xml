@@ -10,6 +10,10 @@
 				<exclude name="build.xml"/>
 				<exclude name="src/main/webapp/WEB-INF/classes/**"/>
 			</zipfileset>
+			<zipfileset prefix="s2dao-pager-examples" dir="target">
+				<include name="s2dao-pager-examples.war"/>
+				<include name="s2dao-pager-examples-sources.jar"/>
+			</zipfileset>
 		</zip>
 	</target>
 
