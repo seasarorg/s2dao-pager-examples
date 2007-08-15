@@ -25,8 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.seasar.dao.pager.PagerSupport;
-import org.seasar.framework.container.S2Container;
-import org.seasar.framework.container.factory.S2ContainerFactory;
+import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 
 import examples.pager.BookDao;
 import examples.pager.CategoryPagerCondition;
@@ -40,9 +39,7 @@ public class FindBookServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    private static final String PATH = "examples/pager/PagerClient.dicon";
-
-    private S2Container container;
+    private BookDao bookDao;
 
     /** ページャサポートクラス */
     private PagerSupport pager = new PagerSupport(10,
@@ -50,8 +47,8 @@ public class FindBookServlet extends HttpServlet {
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        container = S2ContainerFactory.create(PATH);
-        container.init();
+        bookDao = (BookDao) SingletonS2ContainerFactory.getContainer()
+                .getComponent(BookDao.class);
     }
 
     protected void doGet(HttpServletRequest request,
@@ -73,7 +70,6 @@ public class FindBookServlet extends HttpServlet {
         }
 
         // ページャ対応の検索を実行
-        BookDao bookDao = (BookDao) container.getComponent(BookDao.class);
         List books = bookDao.findByCategoryPagerCondition(dto);
         request.setAttribute("books", books);
 

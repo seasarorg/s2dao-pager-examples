@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components.dtd">
+<components namespace="app">
+	<include path="aop.dicon"/>
+	<include path="j2ee.dicon"/>
+	<include path="examples/pager/PagerClient.dicon"/>
+</components>

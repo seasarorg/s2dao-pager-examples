@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
-"http://www.seasar.org/dtd/components.dtd">
+<!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
+	"http://www.seasar.org/dtd/components21.dtd">
 <components namespace="j2ee">
 	<component name="transactionManager"
 		class="org.seasar.extension.jta.TransactionManagerImpl"/>
@@ -10,41 +10,63 @@
 		class="org.seasar.extension.tx.RequiresNewInterceptor"/>
 	<component name="mandatoryTx"
 		class="org.seasar.extension.tx.MandatoryInterceptor"/>
+	<component name="notSupportedTx"
+		class="org.seasar.extension.tx.NotSupportedInterceptor"/>
 
+	<!-- 全DBMS対応のページング処理用設定 -->
+	<component 
+		name="resultSetFactory"
+		class="org.seasar.dao.pager.PagerResultSetFactoryWrapper">
+		<arg>
+			<component class="org.seasar.extension.jdbc.impl.BasicResultSetFactory"/>
+		</arg>
+		<property name="useScrollCursor">true</property>
+	</component>
+	<component class="org.seasar.extension.jdbc.impl.ConfigurableStatementFactory">
+		<arg>
+			<component class="org.seasar.dao.pager.PagerStatementFactory"/>
+		</arg>
+		<property name="fetchSize">100</property>
+		<!--
+		<property name="maxRows">100</property>
+		-->
+	</component>
+
+	<!-- LIMIT OFFSET句を使ったSQL書き換えによるページング処理用設定 -->
+	<!--
+	<component name="pagingSQLRewriter" class="org.seasar.dao.pager.LimitOffsetPagingSQLRewriter"/>
 	<component class="org.seasar.extension.jdbc.impl.BasicResultSetFactory"/>
-	<component class="org.seasar.extension.jdbc.impl.BasicStatementFactory"/>
+	<component class="org.seasar.extension.jdbc.impl.ConfigurableStatementFactory">
+		<arg>
+			<component class="org.seasar.extension.jdbc.impl.BasicStatementFactory"/>
+		</arg>
+		<property name="fetchSize">100</property>
+		<!- -
+		<property name="maxRows">100</property>
+		- ->
+	</component>
+	-->
+
+	<!-- ORACLE ROWNUM句を使ったSQL書き換えによるページング処理用設定 -->
+	<!--
+	<component name="pagingSQLRewriter" class="org.seasar.dao.pager.OracleRownumPagingSQLRewriter"/>
+	<component class="org.seasar.extension.jdbc.impl.BasicResultSetFactory"/>
+	<component class="org.seasar.extension.jdbc.impl.ConfigurableStatementFactory">
+		<arg>
+			<component class="org.seasar.extension.jdbc.impl.BasicStatementFactory"/>
+		</arg>
+		<property name="fetchSize">100</property>
+		<!- -
+		<property name="maxRows">100</property>
+		- ->
+	</component>
+	-->
+
 	<!--
 	<component class="org.seasar.extension.jdbc.impl.OracleResultSetFactory"/>
 	<component class="org.seasar.extension.jdbc.impl.BooleanToIntStatementFactory"/>
 	-->
 
-	<!--
-	<component name="xaDataSource"
-		class="org.seasar.extension.dbcp.impl.XADataSourceImpl">
-		<property name="driverClassName">
-			"oracle.jdbc.driver.OracleDriver"
-		</property>
-		<property name="URL">
-			"jdbc:oracle:thin:@isid00845:1521:ark"
-		</property>
-		<property name="user">"ark"</property>
-		<property name="password">"ark"</property>
-	</component>
-	-->
-	
-<!--
-	<component name="xaDataSource"
-		class="org.seasar.extension.dbcp.impl.XADataSourceImpl">
-		<property name="driverClassName">
-			"org.postgresql.Driver"
-		</property>
-		<property name="URL">
-			"jdbc:postgresql://localhost/postgres"
-		</property>
-		<property name="user">"postgres"</property>
-		<property name="password">"postgres"</property>
-	</component>
--->	
 	<component name="xaDataSource"
 		class="org.seasar.extension.dbcp.impl.XADataSourceImpl">
 		<property name="driverClassName">
@@ -61,96 +83,15 @@
 		<property name="user">"sa"</property>
 		<property name="password">""</property>
 	</component>
-<!--		
-	<component name="xaDataSource"
-		class="org.seasar.extension.dbcp.impl.XADataSourceImpl">
-		<property name="driverClassName">
-			"org.postgresql.Driver"
-		</property>
-		<property name="URL">
-			"jdbc:postgresql://localhost/template1"
-		</property>
-		<property name="user">"postgres"</property>
-		<property name="password">"postgres"</property>
-	</component>
--->	
 
 	<component name="connectionPool"
 		class="org.seasar.extension.dbcp.impl.ConnectionPoolImpl">
 		<property name="timeout">600</property>
 		<property name="maxPoolSize">10</property>
+		<property name="allowLocalTx">true</property>
 		<destroyMethod name="close"/>
 	</component>
 	<component name="dataSource"
 		class="org.seasar.extension.dbcp.impl.DataSourceImpl"/>
-	
-	<!-- WebLogic
-	<component name="initialContext" class="javax.naming.InitialContext"/>
-	<component name="transactionManager"
-	    class="org.seasar.extension.j2ee.JndiTransactionManager">
-	    <arg>initialContext</arg>
-	    <arg>"javax.transaction.TransactionManager"</arg>
-	</component>
-	<component
-	    class="org.seasar.extension.j2ee.JndiDataSource">
-	    <arg>initialContext</arg>
-	    <arg>"jndiName"</arg>
-	</component>
-	-->
-	
-	<!-- WebSphere 4
-	<component name="initialContext" class="javax.naming.InitialContext"/>
-	<component name="transactionManager"
-		class="org.seasar.extension.j2ee.SingletonTransactionManager">
-		<arg>"com.ibm.ejs.jts.jta.JTSXA"</arg>
-		<arg>"getTransactionManager"</arg>
-	</component>
-	<component
-		class="org.seasar.extension.j2ee.JndiDataSource">
-		<arg>initialContext</arg>
-		<arg>"jndiName"</arg>
-	</component>
-	-->
-	
-	<!-- WebSphere 5
-	<component name="initialContext" class="javax.naming.InitialContext"/>
-	<component name="transactionManager"
-		class="org.seasar.extension.j2ee.SingletonTransactionManager">
-		<arg>"com.ibm.ejs.jts.jta.TransactionManagerFactory"</arg>
-		<arg>"getTransactionManager"</arg>
-	</component>
-	<component
-		class="org.seasar.extension.j2ee.JndiDataSource">
-		<arg>initialContext</arg>
-		<arg>"jndiName"</arg>
-	</component>
-	-->
-	
-	<!-- JBoss
-	<component name="initialContext" class="javax.naming.InitialContext"/>
-	<component name="transactionManager"
-		class="org.seasar.extension.j2ee.JndiTransactionManager">
-		<arg>initialContext</arg>
-		<arg>"java:/TransactionManager"</arg>
-	</component>
-	<component
-		class="org.seasar.extension.j2ee.JndiDataSource">
-		<arg>initialContext</arg>
-		<arg>"jndiName"</arg>
-	</component>
-	-->
-	
-	<!-- Oracle10gAS
-	<component name="initialContext" class="javax.naming.InitialContext"/>
-	<component name="transactionManager"
-    	class="org.seasar.extension.j2ee.JndiTransactionManager">
-    	<arg>initialContext</arg>
-    	<arg>"java:comp/UserTransaction"</arg>
-	</component>
-	<component
-    	class="org.seasar.extension.j2ee.JndiDataSource">
-    	<arg>initialContext</arg>
-    	<arg>"jndiName"</arg>
-	</component>
-	-->
+
 </components>

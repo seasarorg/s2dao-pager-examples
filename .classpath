@@ -3,19 +3,13 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
-	<classpathentry output="target/test-classes" kind="src" path="src/test/java"/>
-	<classpathentry output="target/test-classes" kind="src" path="src/test/resources"/>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/resources"/>
 	<classpathentry kind="lib" path="lib/junit-3.8.1.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/hsqldb-1.8.0.1.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/log4j-1.2.8.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ognl-2.6.5.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/poi-2.5.1-final-20040804.jar"/>
-	<classpathentry sourcepath="lib/s2-dao-1.0.31-SNAPSHOT-sources.jar" kind="lib" path="src/main/webapp/WEB-INF/lib/s2-dao-1.0.31.jar"/>
-	<classpathentry sourcepath="lib/s2-extension-2.3.7-sources.jar" kind="lib" path="src/main/webapp/WEB-INF/lib/s2-extension-2.3.7.jar"/>
-	<classpathentry sourcepath="lib/s2-framework-2.3.7-sources.jar" kind="lib" path="src/main/webapp/WEB-INF/lib/s2-framework-2.3.7.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/aopalliance-1.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/commons-logging-1.0.4.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/javassist-3.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/geronimo-jta_1.0.1B_spec-1.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jstl-1.1.2.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/standard-1.1.2.jar"/>
@@ -23,5 +17,11 @@
 	<classpathentry kind="var" path="TOMCAT_HOME/common/lib/jasper-runtime.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/common/lib/jsp-api.jar"/>
 	<classpathentry kind="src" path="work"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/javassist-3.4.ga.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ognl-2.6.9-patch-20070624.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/poi-3.0-FINAL.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/s2-dao-1.0.46-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/s2-extension-2.3.22.jar" sourcepath="lib/s2-extension-2.3.22-sources.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/s2-framework-2.3.22.jar" sourcepath="lib/s2-framework-2.3.22-sources.jar"/>
 	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
 </classpath>
