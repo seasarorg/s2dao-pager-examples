@@ -28,6 +28,8 @@ public interface BookDao {
 
     public static final String ARGS_findByCategory = "category";
 
+    public static final String findByCategoryPagerCondition_QUERY = "ORDER BY ID";
+
     public List findByCategory(String category);
 
     public List findByCategoryPagerCondition(CategoryPagerCondition dto);
