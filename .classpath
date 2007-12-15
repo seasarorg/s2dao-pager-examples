@@ -17,8 +17,8 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ognl-2.6.9-patch-20070624.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/poi-3.0-FINAL.jar"/>
 	<classpathentry kind="lib" path="lib/geronimo-j2ee_1.4_spec-1.0.jar"/>
-	<classpathentry kind="lib" path="lib/s2-dao-1.0.47-RC1.jar" sourcepath="lib/s2-dao-1.0.47-RC1-sources.jar"/>
-	<classpathentry kind="lib" path="lib/s2-extension-2.3.23-rc1.jar" sourcepath="lib/s2-extension-2.3.23-rc1-sources.jar"/>
-	<classpathentry kind="lib" path="lib/s2-framework-2.3.23-rc1.jar" sourcepath="lib/s2-framework-2.3.23-rc1-sources.jar"/>
+	<classpathentry kind="lib" path="lib/s2-dao-1.0.47.jar" sourcepath="lib/s2-dao-1.0.47-sources.jar"/>
+	<classpathentry kind="lib" path="lib/s2-extension-2.3.23.jar" sourcepath="lib/s2-extension-2.3.23-sources.jar"/>
+	<classpathentry kind="lib" path="lib/s2-framework-2.3.23.jar" sourcepath="lib/s2-framework-2.3.23-sources.jar"/>
 	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
 </classpath>
