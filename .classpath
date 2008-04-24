@@ -19,6 +19,6 @@
 	<classpathentry kind="lib" path="lib/geronimo-j2ee_1.4_spec-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/s2-extension-2.3.23.jar" sourcepath="lib/s2-extension-2.3.23-sources.jar"/>
 	<classpathentry kind="lib" path="lib/s2-framework-2.3.23.jar" sourcepath="lib/s2-framework-2.3.23-sources.jar"/>
-	<classpathentry kind="lib" path="lib/s2-dao-1.0.48-RC1.jar" sourcepath="lib/s2-dao-1.0.48-RC1-sources.jar"/>
+	<classpathentry kind="lib" path="lib/s2-dao-1.0.48.jar" sourcepath="lib/s2-dao-1.0.48-sources.jar"/>
 	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
 </classpath>
