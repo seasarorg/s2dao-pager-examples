@@ -47,6 +47,20 @@
 	</component>
 	-->
 
+	<!-- LIMIT OFFSET句を使ったSQL書き換えによるページング処理用設定(MySQL用) -->
+	<!--
+	<component class="org.seasar.dao.pager.MySQLLimitOffsetPagingSqlRewriter" />
+	<component class="org.seasar.extension.jdbc.impl.BasicResultSetFactory"/>
+	<component class="org.seasar.extension.jdbc.impl.ConfigurableStatementFactory">
+		<arg>
+			<component class="org.seasar.extension.jdbc.impl.BasicStatementFactory"/>
+		</arg>
+		<property name="fetchSize">100</property>
+		<!- -
+		<property name="maxRows">100</property>
+		- ->
+	</component>
+	-->
 	<!-- ORACLE ROWNUM句を使ったSQL書き換えによるページング処理用設定 -->
 	<!--
 	<component name="pagingSQLRewriter" class="org.seasar.dao.pager.OracleRownumPagingSQLRewriter"/>
